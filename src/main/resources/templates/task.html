@@ -9,10 +9,10 @@
     </form>
     <ul>
         <li th:each="todo :${todoList}">
-            <form action="" method="">
+            <form th:action="@{/updatetodo/{id}(id=${todo.id})}" method="post">
             <input type="text" th:value="${todo.toDoContent}" name="toDoContent">
 
-            <input type="checkbox" th:checked="${todo.isComplete}" name="isComplete">
+            <input type="checkbox" th:checked="${todo.complete}" name="complete">
 
             <button type="submit">UPDATE</button>
             </form>

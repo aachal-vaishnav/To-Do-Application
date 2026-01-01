@@ -5,10 +5,7 @@ import com.example.ToDo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class ToDoController {
 //        return "task";
 //    }
 
-    @RequestMapping
+    @RequestMapping("/")
     public String getAllToDo(Model model){
         //fetch record
         List<ToDo> listOfTodos= todoService.getAllTodos();
@@ -39,10 +36,11 @@ public class ToDoController {
         todoService.saveTodo(todo);
         return "success";
     }
-
-//    public String updateToDo(){
-//
-//    }
+    @RequestMapping(value= "/updatetodo/{id}")
+    public String updateToDo(@PathVariable("id") Long id,@ModelAttribute ToDo todo){
+        todoService.updateTodo(id,todo);
+        return "redirect:/";
+    }
 //    public String deleteToDo(){
 //
 //    }
