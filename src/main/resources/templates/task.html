@@ -7,5 +7,16 @@
         <input type="text" name="toDoContent" placeholder="Write Your Task">
         <button type="submit">Add ToDo</button>
     </form>
+    <ul>
+        <li th:each="todo :${todoList}">
+            <form action="" method="">
+            <input type="text" th:value="${todo.toDoContent}" name="toDoContent">
+
+            <input type="checkbox" th:checked="${todo.isComplete}" name="isComplete">
+
+            <button type="submit">UPDATE</button>
+            </form>
+        </li>
+    </ul>
 </body>
 </html>
