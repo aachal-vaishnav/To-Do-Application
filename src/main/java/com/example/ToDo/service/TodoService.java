@@ -29,4 +29,7 @@ public class TodoService {
             todoRepository.updateTodo(oldTodo);
         }
     }
+    public void deleteTodo(Long id){
+        todoRepository.deleteTodoById(id);
+    }
 }

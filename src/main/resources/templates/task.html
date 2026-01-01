@@ -1,22 +1,77 @@
+<!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <title>ToDo Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <form action="/addtodo" method="post">
-        <input type="text" name="toDoContent" placeholder="Write Your Task">
-        <button type="submit">Add ToDo</button>
-    </form>
-    <ul>
-        <li th:each="todo :${todoList}">
-            <form th:action="@{/updatetodo/{id}(id=${todo.id})}" method="post">
-            <input type="text" th:value="${todo.toDoContent}" name="toDoContent">
 
-            <input type="checkbox" th:checked="${todo.complete}" name="complete">
+<body class="bg-light">
 
-            <button type="submit">UPDATE</button>
-            </form>
-        </li>
-    </ul>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <!-- Title -->
+            <h1 class="text-center mb-4">📝 TODO Application</h1>
+
+            <!-- Add Todo Card -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <form action="/addtodo" method="post" class="d-flex gap-2">
+                        <input type="text"
+                               name="toDoContent"
+                               class="form-control"
+                               placeholder="Write your task"
+                               required>
+                        <button type="submit" class="btn btn-primary">
+                            Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Todo List -->
+            <ul class="list-group">
+                <li class="list-group-item"
+                    th:each="todo : ${todoList}">
+
+                    <form th:action="@{/updatetodo/{id}(id=${todo.id})}"
+                          method="post"
+                          class="d-flex align-items-center gap-3">
+
+                        <!-- Checkbox -->
+                        <input type="checkbox"
+                               class="form-check-input"
+                               name="complete"
+                               th:checked="${todo.complete}"
+                               onchange="this.form.submit()">
+
+                        <!-- Task text -->
+                        <input type="text"
+                               name="toDoContent"
+                               th:value="${todo.toDoContent}"
+                               class="form-control">
+
+                        <!-- Update Button -->
+                        <button type="submit"
+                                class="btn btn-success btn-sm">
+                            Update
+                        </button>
+
+                        <!-- Delete Button -->
+                        <a th:href="@{/deleteToDo/{id}(id=${todo.id})}"
+                           class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+                    </form>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
