@@ -258,22 +258,27 @@ CREATE DATABASE todo_db;
 
 2. **Configure Database Connection:**
 
-Edit `src/main/resources/application.properties`:
+Edit `src/main/resources/application.yml`:
 
-```properties
-# Database Configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/todo_db
-spring.datasource.username=your_mysql_username
-spring.datasource.password=your_mysql_password
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+```yml
+#spring:
+datasource:
+url: jdbc:mysql://localhost:3306/todo_db
+username: your_mysql_username
+password: your_mysql_password
+driver-class-name: com.mysql.cj.jdbc.Driver
 
-# JPA/Hibernate Configuration
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+jpa:
+hibernate:
+ddl-auto: update
+show-sql: true
+properties:
+hibernate:
+dialect: org.hibernate.dialect.MySQL8Dialect
 
-# Server Configuration
-server.port=8080
+server:
+port: 8080
+
 ```
 
 3. **Update Credentials:**
