@@ -1,4 +1,4 @@
-# ToDo Application API
+# Task Management Application Api
 
 A RESTful API for managing todo items built with Spring Boot, JPA/Hibernate, and MySQL. This application provides a complete CRUD (Create, Read, Update, Delete) interface for todo management with a web interface powered by Thymeleaf and Bootstrap.
 
