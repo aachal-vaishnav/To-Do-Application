@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/todo?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: your username
-    password: your password
+    username: root
+    password: Mine333@
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
